@@ -8,3 +8,16 @@ const reducers = combinedReducers({
 });
 
 export default reducers;
+
+const getAllTopics = (state) => {
+  return state.allIds.map(id => state.byId[id]);
+};
+
+export const getAllSortedTopicList = (state) => {
+  const allTopicList = getAllTopics(state);
+
+  // sort the topic list decreasingly by upvotes
+  return allTopicList.sort((a, b) => {
+    return b.upVotes - a.upVotes;
+  });
+};

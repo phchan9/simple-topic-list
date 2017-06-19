@@ -7,8 +7,8 @@ const TopicList = ({ topics, onUpVoteCallBack, onDownVoteCallBack}) => (
       {topics.map(topic => (
         <Topic
           key={topic.id}
-          onUpVoteCallBack={onUpVoteCallBack}
-          onDownVoteCallBack={onDownVoteCallBack}
+          onUpVoteCallBack={() => onUpVoteCallBack(topic.id)}
+          onDownVoteCallBack={() => onDownVoteCallBack(topic.id)}
           {...topic}
           />
       ))}

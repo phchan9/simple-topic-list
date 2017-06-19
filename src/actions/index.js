@@ -1,6 +1,7 @@
 import v4 from 'node-uuid';
 import * as types from '../constants/ActionTypes';
 
+// use v4() to let topic.id be unique.
 export const addTopic = (title) => ({
   type: types.ADD_TOPIC,
   id: v4(),

@@ -1,7 +1,8 @@
 import React from 'react';
+import './Topic.css';
 
 const Topic = ({title, upVotes, downVotes, onUpVoteCallBack, onDownVoteCallBack}) => (
-  <li className="list-group-item">
+  <li className="Topic list-group-item">
     <h5>{title}</h5>
     <div>
       <button type="button"

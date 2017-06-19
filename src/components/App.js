@@ -3,7 +3,7 @@ import TopicListContainer from '../containers/TopicListContainer';
 import AddTopicContainer from '../containers/AddTopicContainer';
 
 const App = () => (
-  <div clasName="flex-column">
+  <div className="flex-column">
     <AddTopicContainer />
     <TopicListContainer />
   </div>

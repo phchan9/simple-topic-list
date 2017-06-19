@@ -5,7 +5,7 @@ import { getAllSortedTopicList } from '../reducers';
 
 const mapStateToProps = (state) => ({
   // always get the top 20 topics
-  votes: getAllSortedTopicList(state).slice(0, 20)
+  topics: getAllSortedTopicList(state).slice(0, 20)
 });
 
 const mapDispatchToProps = {

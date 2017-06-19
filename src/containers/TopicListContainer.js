@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { upVote, downVote } from '../actions';
 import TopicList from '../components/TopicList';
@@ -15,5 +14,5 @@ const mapDispatchToProps = {
 };
 
 const TopicListContainer = connect(mapStateToProps,
-                                   mapDispatchToProps)(TopicListContainer);
+                                   mapDispatchToProps)(TopicList);
 export default TopicListContainer;

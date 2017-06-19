@@ -1,8 +1,8 @@
-import { combinedReducers } from 'redux';
+import { combineReducers } from 'redux';
 import byId from './byId';
 import allIds from './allIds';
 
-const reducers = combinedReducers({
+const reducers = combineReducers({
   byId,
   allIds
 });

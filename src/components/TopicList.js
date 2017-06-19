@@ -1,5 +1,5 @@
 import React from 'react';
-import Topic from './topic';
+import Topic from './Topic';
 
 const TopicList = ({ topics, onUpVoteCallBack, onDownVoteCallBack}) => (
   <ol>

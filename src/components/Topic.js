@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Topic.css';
 
 const Topic = ({title, upVotes, downVotes, onUpVoteCallBack, onDownVoteCallBack}) => (
@@ -18,5 +19,13 @@ const Topic = ({title, upVotes, downVotes, onUpVoteCallBack, onDownVoteCallBack}
     </div>
   </li>
 );
+
+Topic.propTypes = {
+  title: PropTypes.string.isRequired,
+  upVotes: PropTypes.number.isRequired,
+  downVotes: PropTypes.number.isRequired,
+  onUpVoteCallBack: PropTypes.func.isRequired,
+  onDownVoteCallBack: PropTypes.func.isRequired
+};
 
 export default Topic;

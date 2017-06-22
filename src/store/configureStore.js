@@ -1,32 +1,16 @@
 import { createStore } from 'redux';
 import { v4 } from 'node-uuid';
 import reducers from '../reducers';
+import { createTopic } from '../utils';
 
 const topics = [
-  {
-    id: v4(),
-    upVotes: 12,
-    downVotes: 23,
-    title: 'Things you should know before using AWS’s Elasticsearch Service'
-  },
-  {
-    id: v4(),
-    upVotes: 33,
-    downVotes: 11,
-    title: 'Cannabis reverses aging processes in the brain'
-  },
-  {
-    id: v4(),
-    upVotes: 41,
-    downVotes: 2,
-    title: 'Ask HN: How secure is the encryption offered by OS X\'s Disk Utility?'
-  },
-  {
-    id: v4(),
-    upVotes: 8,
-    downVotes: 3,
-    title: 'The world\'s largest library of historical European martial arts books'
-  }
+  createTopic(v4(), 12, 23, 'Things you should know before using AWS’s Elasticsearch Service'),
+  createTopic(v4(), 33, 11,
+              'Cannabis reverses aging processes in the brain'),
+  createTopic(v4(), 41, 2,
+              'Ask HN: How secure is the encryption offered by OS X\'s Disk Utility?'),
+  createTopic(v4(), 8, 3,
+              'The world\'s largest library of historical European martial arts books')
 ];
 
 const initialState = {

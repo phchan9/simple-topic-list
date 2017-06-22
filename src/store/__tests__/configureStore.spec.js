@@ -1,4 +1,5 @@
 import store from '../configureStore';
+import { createTopic } from '../../utils';
 
 // mock the return value of `v4` serially
 jest.mock('node-uuid', () => {
@@ -12,13 +13,6 @@ jest.mock('node-uuid', () => {
 });
 
 it('should initialize', () => {
-  const createTopic = (id, upVotes, downVotes, title) => ({
-    id,
-    upVotes,
-    downVotes,
-    title
-  });
-
   const actual = store.getState();
   const expected = {
     byId: {

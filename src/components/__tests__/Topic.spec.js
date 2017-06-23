@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Topic from '../Topic';
+import toJson from 'enzyme-to-json';
 
 const setup = () => {
   const props = {
@@ -22,7 +23,7 @@ const setup = () => {
 describe('Topic Component', () => {
   it('render correctly', () => {
     const { wrapper } = setup();
-    expect(wrapper).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should properly fire `onUpVotecallback` or `onDownVoteCallBack` when click button'

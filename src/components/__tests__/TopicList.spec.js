@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import TopicList from '../TopicList';
 import Topic from '../Topic';
-
 import { createTopic } from '../../utils';
+import toJson from 'enzyme-to-json';
 
 const setup = () => {
   const props = {
@@ -26,7 +26,7 @@ const setup = () => {
 describe('TopicList Component', () => {
   it('render correctly', () => {
     const { wrapper } = setup();
-    expect(wrapper).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should properly fire `onUpVoteCallBack` or `onDownVoteCallBack` when click any of child components',

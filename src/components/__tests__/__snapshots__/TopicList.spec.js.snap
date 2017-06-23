@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopicList Component render correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <ol
+        className="list-group"
+    >
+        <Topic
+            downVotes={34}
+            id={1}
+            onDownVoteCallBack={[Function]}
+            onUpVoteCallBack={[Function]}
+            title="title1"
+            upVotes={23}
+        />
+        <Topic
+            downVotes={43}
+            id={2}
+            onDownVoteCallBack={[Function]}
+            onUpVoteCallBack={[Function]}
+            title="title2"
+            upVotes={32}
+        />
+    </ol>
+</div>,
+  "nodes": Array [
+    <div>
+      <ol
+            className="list-group"
+      >
+            <Topic
+                  downVotes={34}
+                  id={1}
+                  onDownVoteCallBack={[Function]}
+                  onUpVoteCallBack={[Function]}
+                  title="title1"
+                  upVotes={23}
+            />
+            <Topic
+                  downVotes={43}
+                  id={2}
+                  onDownVoteCallBack={[Function]}
+                  onUpVoteCallBack={[Function]}
+                  title="title2"
+                  upVotes={32}
+            />
+      </ol>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <TopicList
+        onDownVoteCallBack={[Function]}
+        onUpVoteCallBack={[Function]}
+        topics={
+                Array [
+                        Object {
+                          "downVotes": 34,
+                          "id": 1,
+                          "title": "title1",
+                          "upVotes": 23,
+                        },
+                        Object {
+                          "downVotes": 43,
+                          "id": 2,
+                          "title": "title2",
+                          "upVotes": 32,
+                        },
+                      ]
+        }
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "onDownVoteCallBack": [Function],
+          "onUpVoteCallBack": [Function],
+          "topics": Array [
+            Object {
+              "downVotes": 34,
+              "id": 1,
+              "title": "title1",
+              "upVotes": 23,
+            },
+            Object {
+              "downVotes": 43,
+              "id": 2,
+              "title": "title2",
+              "upVotes": 32,
+            },
+          ],
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <ol
+                    className="list-group"
+          >
+                    <Topic
+                              downVotes={34}
+                              id={1}
+                              onDownVoteCallBack={[Function]}
+                              onUpVoteCallBack={[Function]}
+                              title="title1"
+                              upVotes={23}
+                    />
+                    <Topic
+                              downVotes={43}
+                              id={2}
+                              onDownVoteCallBack={[Function]}
+                              onUpVoteCallBack={[Function]}
+                              title="title2"
+                              upVotes={32}
+                    />
+          </ol>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <ol
+                    className="list-group"
+          >
+                    <Topic
+                              downVotes={34}
+                              id={1}
+                              onDownVoteCallBack={[Function]}
+                              onUpVoteCallBack={[Function]}
+                              title="title1"
+                              upVotes={23}
+                    />
+                    <Topic
+                              downVotes={43}
+                              id={2}
+                              onDownVoteCallBack={[Function]}
+                              onUpVoteCallBack={[Function]}
+                              title="title2"
+                              upVotes={32}
+                    />
+          </ol>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <TopicList
+    onDownVoteCallBack={[Function]}
+    onUpVoteCallBack={[Function]}
+    topics={
+        Array [
+            Object {
+              "downVotes": 34,
+              "id": 1,
+              "title": "title1",
+              "upVotes": 23,
+            },
+            Object {
+              "downVotes": 43,
+              "id": 2,
+              "title": "title2",
+              "upVotes": 32,
+            },
+          ]
+    }
+/>,
+}
+`;

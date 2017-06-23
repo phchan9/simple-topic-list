@@ -35,7 +35,7 @@ class AddTopicContainer extends Component {
 
   render() {
     let formInputClass = "form-group " + (this.state.error? "has-error": "");
-    let errorMsgLabelClass = this.state.error? "": "invisible";
+    let errorMsgLabelClass = "error " + (this.state.error? "": "invisible");
 
     return (
       <div>
@@ -60,7 +60,7 @@ class AddTopicContainer extends Component {
       </div>
     );
   }
-}
+};
 
 AddTopicContainer = connect()(AddTopicContainer);
 export default AddTopicContainer;

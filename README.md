@@ -1,8 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). I use react+redux to implment this simple-topic-list project.
 
+## Quick Start
+#### `yarn install` or `npm install`
+After cloning this repo, use [yarn](https://yarnpkg.com/en/)(or npm) to install dependencies for this project.
+
+#### `yarn start` or `npm start`
+Run the app in development mode.  
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
 ## Depolyment
 
-Use buildpack provided by Heroku. See the [introductory blog post](https://blog.heroku.com/deploying-react-with-zero-configuration) and entry in [Heroku elements](https://elements.heroku.com/buildpacks/mars/create-react-app-buildpack).
+I deployed [this web app](http://simple-topic-list.herokuapp.com/) on [Heroku](http://heroku.com/) with the buildpack provided by them. See the [introductory blog post](https://blog.heroku.com/deploying-react-with-zero-configuration) and entry in [Heroku elements](https://elements.heroku.com/buildpacks/mars/create-react-app-buildpack).
 Follow the instructions from their git repo to deploy this app:  
 ✏️ *Replace `$APP_NAME` with a name for this app.*
 ``` bash

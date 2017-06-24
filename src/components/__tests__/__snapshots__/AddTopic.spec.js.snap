@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTopic Component render correctly 1`] = `
+<AddTopic
+  addTopic={[Function]}
+>
+  <div>
+    <form
+      className="form-horizontal"
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group "
+      >
+        <label>
+          Topic:
+        </label>
+        <textarea
+          autoFocus="true"
+          className="form-control"
+          onChange={[Function]}
+          placeholder="A topic doesn't exceed 255 characters."
+          rows="5"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <button
+          className="btn btn-default"
+          type="submit"
+        >
+          Submit
+        </button>
+        <label
+          className="error invisible"
+        >
+           * A topic doesn't exceed 255 characters
+        </label>
+      </div>
+    </form>
+  </div>
+</AddTopic>
+`;

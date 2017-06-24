@@ -22,6 +22,18 @@ describe('AddTopic Component', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('should not fire `addTopic` callback when submit a blank topic', () => {
+    const { wrapper, props } = setup();
+    const form = wrapper.find('form');
+    const textArea = wrapper.find('textarea');
+    textArea.node.value = '';
+    textArea.simulate('change', textArea);
+    form.simulate('submit', {
+      preventDefault: () => {}
+    });
+    expect(props.addTopic).not.toHaveBeenCalled();
+  });
+
   it('should properly fire `addTopic` callback when submit a new topic', () => {
     const { wrapper, props } = setup();
     const form = wrapper.find('form');

@@ -10,7 +10,7 @@ exports[`AddTopic Component render correctly 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="form-group "
+        className="form-group"
       >
         <label>
           Topic:

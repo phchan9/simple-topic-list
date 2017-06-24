@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddTopic extends Component {
 
@@ -17,10 +18,10 @@ class AddTopic extends Component {
       return;
     }
     // check if string exceed 255 characters
-    else if (text.trim().length > 255) {
+    else if (text.length > 255) {
       this.setState({ error: true });
     } else {
-      addTopic(text.trim());
+      addTopic(text);
       this.setState({ error: false });
       this.setState({ text: ''});
     }
@@ -61,5 +62,9 @@ class AddTopic extends Component {
     );
   }
 }
+
+AddTopic.propTypes = {
+  addTopic: PropTypes.func.isRequired
+};
 
 export default AddTopic;

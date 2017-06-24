@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 class AddTopic extends Component {
 
@@ -32,8 +33,12 @@ class AddTopic extends Component {
   }
 
   render() {
-    let formInputClass = "form-group " + (this.state.error? "has-error": "");
-    let errorMsgLabelClass = "error " + (this.state.error? "": "invisible");
+    const formInputClass = classNames('form-group', {
+      'has-error':this.state.error
+    });
+    const errorMsgLabelClass = classNames('error', {
+      invisible: !this.state.error
+    });
 
     return (
       <div>

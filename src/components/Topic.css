@@ -1,6 +1,0 @@
-/* make ordered-list decimal-indexed */
-.Topic {
-    list-style: decimal inside;
-    display: list-item;
-    border: 0 none;
-}

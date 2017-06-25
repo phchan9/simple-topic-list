@@ -2,7 +2,14 @@
 
 exports[`Topic Component render correctly 1`] = `
 <li
-  className="Topic list-group-item"
+  className="list-group-item"
+  style={
+    Object {
+      "border": "0 none",
+      "display": "list-item",
+      "listStyle": "decimal inside",
+    }
+  }
 >
   <h5>
     This is the title

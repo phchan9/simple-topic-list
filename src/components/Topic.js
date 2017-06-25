@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Topic.css';
 
-const Topic = ({title, upVotes, downVotes, onUpVoteCallBack, onDownVoteCallBack}) => (
-  <li className="Topic list-group-item">
+// make ordered-list decimal-indexed
+const topicStyle = {
+  listStyle:'decimal inside',
+  display: 'list-item',
+  border: '0 none'
+};
+
+const Topic = ({title, upVotes, downVotes,
+                onUpVoteCallBack, onDownVoteCallBack}) => (
+  <li style={topicStyle} className="list-group-item">
     <h5>{title}</h5>
     <div>
       <button type="button"

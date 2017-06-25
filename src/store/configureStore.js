@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { v4 } from 'node-uuid';
+import { v4 } from 'uuid';
 import reducers from '../reducers';
 import { createTopic } from '../utils';
 

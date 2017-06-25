@@ -1,4 +1,4 @@
-import { v4 } from 'node-uuid';
+import { v4 } from 'uuid';
 import * as types from '../constants/ActionTypes';
 
 // use v4() to let topic.id be unique.

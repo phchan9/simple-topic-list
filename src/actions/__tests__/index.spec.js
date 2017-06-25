@@ -1,8 +1,8 @@
 import * as actions from '../index';
 import * as types from '../../constants/ActionTypes';
 
-// mock the dependency, node-uuid
-jest.mock('node-uuid', () => {
+// mock the dependency, uuid
+jest.mock('uuid', () => {
   return {
     v4: jest.fn(() => 1)
   };

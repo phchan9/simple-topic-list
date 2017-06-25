@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
-    "node-uuid": "^1.4.8",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
-    "redux": "^3.7.0"
+    "redux": "^3.7.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "enzyme": "^2.9.0",

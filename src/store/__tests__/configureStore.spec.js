@@ -2,7 +2,7 @@ import store from '../configureStore';
 import { createTopic } from '../../utils';
 
 // mock the return value of `v4` serially
-jest.mock('node-uuid', () => {
+jest.mock('uuid', () => {
   return {
     v4: jest.fn()
       .mockImplementationOnce(() => 1)

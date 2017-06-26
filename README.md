@@ -11,7 +11,7 @@ Run the app in development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `yarn test` or `npm test`
-Run the test suits of this app.
+Run the test suits of this app. I use [jest](https://facebook.github.io/jest/) as my test runner which is built in Create React App and use its [Snapshot Testing](http://facebook.github.io/jest/docs/snapshot-testing.html) techniques as my UI testing.
 
 ## Depolyment
 

@@ -1,4 +1,3 @@
-import { v4 } from 'uuid';
 import axios from 'axios';
 import { normalize } from 'normalizr';
 import * as types from '../constants/ActionTypes';

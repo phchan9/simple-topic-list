@@ -1,5 +1,4 @@
 import * as types from '../constants/ActionTypes';
-import topic from './topic';
 
 const byId = (state = {}, action) => {
   switch(action.type) {

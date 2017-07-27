@@ -35,12 +35,30 @@ export const addTopic = (title) => {
   };
 }
 
-export const upVote = (id) => ({
-  type: types.UPVOTE_TOPIC,
-  id
-});
+export const upVote = (id, vote) => {
+  const request = axios.patch(`${ROOT_URL}/${id}?access_token=${access_token}`,
+    {
+      [KEY_PAYLOAD_UPVOTES]: vote
+    }
+  )
+  .then(res => normalize(res.data, schema.topic));
 
-export const downVote = (id) => ({
-  type: types.DOWNVOTE_TOPIC,
-  id
-});
+  return {
+    type: types.UPVOTE_TOPIC,
+    payload: request
+  };
+};
+
+export const downVote = (id, vote) => {
+  const request = axios.patch(`${ROOT_URL}/${id}?access_token=${access_token}`,
+    {
+      [KEY_PAYLOAD_DOWNVOTES]: vote
+    }
+  )
+  .then(res => normalize(res.data, schema.topic));
+  
+  return {
+    type: types.DOWNVOTE_TOPIC,
+    payload: request
+  };
+};

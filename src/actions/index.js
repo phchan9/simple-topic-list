@@ -8,14 +8,16 @@ const KEY_PAYLOAD_TITLE = 'title';
 const KEY_PAYLOAD_UPVOTES = 'upVotes';
 const KEY_PAYLOAD_DOWNVOTES = 'downVotes';
 
+// NOTE: must use REACT_APP prefix which is mentioned in create-react-app doc
 const access_token = process.env.REACT_APP_ACCESS_TOKEN;
 const ROOT_URL = 'https://test-lb-api.herokuapp.com/api/topics';
 
 export const fetchTopics = () => {
-  const request = axios.get(`${ROOT_URL}`);
+  const request = axios.get(`${ROOT_URL}`)
+    .then(res => normalize(res.data, schema.arrayOfTopics));
 
   return {
-    types: types.FETCH_TOPICS,
+    type: types.FETCH_TOPICS,
     payload: request
   };
 }

@@ -1,21 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Topic from './Topic';
 
-const TopicList = ({ topics, onUpVoteCallBack, onDownVoteCallBack}) => (
-  <div>
-    <ol className="list-group">
-      {topics.map(topic => (
-        <Topic
-          key={topic.id}
-          onUpVoteCallBack={() => onUpVoteCallBack(topic.id, topic.upVotes + 1)}
-          onDownVoteCallBack={() => onDownVoteCallBack(topic.id, topic.downVotes + 1)}
-          {...topic}
-          />
-      ))}
-    </ol>
-  </div>
-);
+class TopicList extends Component {
+
+  componentDidMount() {
+    const { fetchTopics } = this.props;
+    fetchTopics();
+  }
+
+  render() {
+    const { topics, onUpVoteCallBack, onDownVoteCallBack } = this.props;
+
+    if (!topics) {
+      return;
+    }
+
+    return (
+      <div>
+        <ol className="list-group">
+          {topics.map(topic => (
+            <Topic
+              key={topic.id}
+              onUpVoteCallBack={() => onUpVoteCallBack(topic.id, topic.upVotes + 1)}
+              onDownVoteCallBack={() => onDownVoteCallBack(topic.id, topic.downVotes + 1)}
+              {...topic}
+              />
+          ))}
+        </ol>
+      </div>
+
+    );
+  }
+}
 
 TopicList.propTypes = {
   topics: PropTypes.arrayOf(PropTypes.shape({

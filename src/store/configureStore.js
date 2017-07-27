@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import promise from 'redux-promise';
 import { v4 } from 'uuid';
 import reducers from '../reducers';
 import { createTopic } from '../utils';
@@ -18,5 +19,5 @@ const initialState = {
   allIds: topics.map(topic => topic.id)
 };
 
-const store = createStore(reducers, initialState);
+const store = createStore(reducers, initialState, applyMiddleware(promise));
 export default store;

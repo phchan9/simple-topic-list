@@ -8,7 +8,7 @@ const byId = (state = {}, action) => {
   case types.DOWNVOTE_TOPIC:
     return {
       ...state,
-      [action.id]: topic(state[action.id], action)
+      ...action.payload.entities.topics
     };
 
   default:

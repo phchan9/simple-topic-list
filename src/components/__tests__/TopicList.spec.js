@@ -14,6 +14,7 @@ const setup = () => {
     ],
     onUpVoteCallBack: jest.fn(),
     onDownVoteCallBack: jest.fn(),
+    fetchTopics: jest.fn(),
   };
 
   const wrapper = shallow(<TopicList {...props} />);
@@ -30,7 +31,7 @@ describe('TopicList Component', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('should properly fire `onUpVoteCallBack` or `onDownVoteCallBack` when click any of child components',
+  it('should properly fire `onUpVoteCallBack` or `onDownVoteCallBack` or `fetchTopics`when click any of child components',
     () => {
       const { wrapper, props } = setup();
       wrapper.find(Topic).forEach((component) => {

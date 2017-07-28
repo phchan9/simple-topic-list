@@ -6,6 +6,9 @@ const byId = (state = {}, action) => {
     case types.ADD_TOPIC:
     case types.UPVOTE_TOPIC:
     case types.DOWNVOTE_TOPIC:
+      if (!action.payload.entities) {
+        return state;
+      }
       return {
         ...state,
         ...action.payload.entities.topics,

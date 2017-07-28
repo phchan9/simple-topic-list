@@ -8,12 +8,13 @@ const KEY_PAYLOAD_UPVOTES = 'upVotes';
 const KEY_PAYLOAD_DOWNVOTES = 'downVotes';
 
 // NOTE: must use REACT_APP prefix which is mentioned in create-react-app doc
-const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
+const accessToken = process.env.REACT_APP_ACCESS_TOKEN || 'qazwsxedc';
 const ROOT_URL = 'https://test-lb-api.herokuapp.com/api/topics';
 
 export const fetchTopics = () => {
   const request = axios.get(`${ROOT_URL}`)
-    .then(res => normalize(res.data, schema.arrayOfTopics));
+    .then(res => normalize(res.data, schema.arrayOfTopics))
+    .catch(err => err);
 
   return {
     type: types.FETCH_TOPICS,
@@ -28,7 +29,8 @@ export const addTopic = (title) => {
       [KEY_PAYLOAD_UPVOTES]: 0,
       [KEY_PAYLOAD_DOWNVOTES]: 0,
     })
-    .then(res => normalize(res.data, schema.topic));
+    .then(res => normalize(res.data, schema.topic))
+    .catch(err => err);
 
   return {
     type: types.ADD_TOPIC,
@@ -42,7 +44,8 @@ export const upVote = (id, vote) => {
       [KEY_PAYLOAD_UPVOTES]: vote,
     },
   )
-  .then(res => normalize(res.data, schema.topic));
+  .then(res => normalize(res.data, schema.topic))
+  .catch(err => err);
 
   return {
     type: types.UPVOTE_TOPIC,
@@ -56,7 +59,8 @@ export const downVote = (id, vote) => {
       [KEY_PAYLOAD_DOWNVOTES]: vote,
     },
   )
-  .then(res => normalize(res.data, schema.topic));
+  .then(res => normalize(res.data, schema.topic))
+  .catch(err => err);
 
   return {
     type: types.DOWNVOTE_TOPIC,

@@ -1,23 +1,42 @@
+import { normalize } from 'normalizr';
+import * as schema from '../../actions/schema';
+import { createTopic } from '../../utils';
 import * as types from '../../constants/ActionTypes';
 import allIds from '../allIds';
 
+const setup = ({ overrideAction }) => {
+  const topic = createTopic(4, 41, 2, 'Ask HN: This is test');
+
+  const action = {
+    payload: normalize(topic, schema.topic),
+    ...overrideAction,
+  };
+
+  return {
+    action,
+    topic,
+  };
+};
+
 describe('allIds reducer', () => {
   it('should handle ADD_TOPIC', () => {
-    const action = {
-      type: types.ADD_TOPIC,
-      id: 4
-    };
+    const { action, topic } = setup({
+      overrideAction: {
+        type: types.ADD_TOPIC,
+      },
+    });
     const prevState = [1, 2, 3];
-    const expected = [1, 2, 3, 4];
+    const expected = [1, 2, 3, topic.id];
     const actual = allIds(prevState, action);
     expect(actual).toEqual(expected);
   });
 
   it('should handle other case', () => {
-    let action = {
-      type: types.UPVOTE_TOPIC,
-      id: 4
-    };
+    const { action } = setup({
+      overrideAction: {
+        type: types.UPVOTE_TOPIC,
+      },
+    });
     const prevState = [1, 2, 3];
     const expected = prevState;
     let actual = allIds(prevState, action);

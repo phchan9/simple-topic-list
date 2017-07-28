@@ -1,6 +1,6 @@
 import { normalize } from 'normalizr';
 import * as schema from '../../actions/schema';
-import { createTopic } from '../../utils';
+import createTopic from '../../utils';
 import * as types from '../../constants/ActionTypes';
 import allIds from '../allIds';
 

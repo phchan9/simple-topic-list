@@ -1,6 +1,8 @@
-export const createTopic = (id, upVotes, downVotes, title) => ({
+const createTopic = (id, upVotes, downVotes, title) => ({
   id,
   upVotes,
   downVotes,
-  title
+  title,
 });
+
+export default createTopic;

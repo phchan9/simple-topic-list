@@ -1,7 +1,7 @@
 import { normalize } from 'normalizr';
 import * as actions from '../index';
 import * as types from '../../constants/ActionTypes';
-import { createTopic } from '../../utils';
+import createTopic from '../../utils';
 import * as schema from '../schema';
 
 // mock the dependency, axois

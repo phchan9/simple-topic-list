@@ -2,7 +2,7 @@ import { normalize } from 'normalizr';
 import * as schema from '../../actions/schema';
 import byId from '../byId';
 import * as types from '../../constants/ActionTypes';
-import { createTopic } from '../../utils';
+import createTopic from '../../utils';
 
 const setup = ({ overrideState, overrideAction }) => {
   const state = {

@@ -9,7 +9,7 @@ const KEY_PAYLOAD_DOWNVOTES = 'downVotes';
 
 // NOTE: must use REACT_APP prefix which is mentioned in create-react-app doc
 const accessToken = process.env.REACT_APP_ACCESS_TOKEN || 'qazwsxedc';
-const ROOT_URL = 'https://test-lb-api.herokuapp.com/api/topics';
+const ROOT_URL = 'http://api-topics.herokuapp.com/api/topics';
 
 export const fetchTopics = () => {
   const request = axios.get(`${ROOT_URL}`)

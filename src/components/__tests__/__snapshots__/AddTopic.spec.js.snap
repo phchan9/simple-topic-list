@@ -12,12 +12,14 @@ exports[`AddTopic Component render correctly 1`] = `
       <div
         className="form-group"
       >
-        <label>
+        <label
+          htmlFor="topic"
+        >
           Topic:
         </label>
         <textarea
-          autoFocus="true"
           className="form-control"
+          id="topic"
           onChange={[Function]}
           placeholder="A topic doesn't exceed 255 characters."
           rows="5"
@@ -36,8 +38,9 @@ exports[`AddTopic Component render correctly 1`] = `
         </button>
         <label
           className="error invisible"
+          htmlFor="submit"
         >
-           * A topic doesn't exceed 255 characters
+           * A topic does not exceed 255 characters
         </label>
       </div>
     </form>

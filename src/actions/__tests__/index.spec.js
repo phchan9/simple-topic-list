@@ -1,39 +1,77 @@
+import { normalize } from 'normalizr';
 import * as actions from '../index';
 import * as types from '../../constants/ActionTypes';
+import createTopic from '../../utils';
+import * as schema from '../schema';
 
-// mock the dependency, uuid
-jest.mock('uuid', () => {
+// mock the dependency, axois
+jest.mock('axios', () => {
+  const topic = (id, upVotes, downVotes, title) => ({
+    id,
+    upVotes,
+    downVotes,
+    title,
+  });
+
+  const mockTopic = topic(1, 10, 10, 'whatever');
   return {
-    v4: jest.fn(() => 1)
+    post: jest.fn(() => Promise.resolve({ data: mockTopic })),
+    get: jest.fn(() => Promise.resolve({
+      data: [
+        topic(1, 2, 3, 'post1'),
+        topic(2, 2, 3, 'post2'),
+      ],
+    })),
+    patch: jest.fn(() => Promise.resolve({ data: mockTopic })),
   };
 });
 
-it('should create an action to add a topic', () => {
-  const title = 'This is a title';
-  const expected = {
-    type: types.ADD_TOPIC,
-    id: 1,
-    upVotes: 0,
-    downVotes: 0,
-    title
-  };
-  expect(actions.addTopic(title)).toEqual(expected);
-});
-
-it('should create an action to upvote a topic', () => {
+const setup = (override) => {
+  const title = 'whatever';
   const id = 1;
-  const expected = {
-    type: types.UPVOTE_TOPIC,
-    id: 1
-  };
-  expect(actions.upVote(id)).toEqual(expected);
-});
+  const votes = 10;
+  const retPayload = normalize(createTopic(id, votes, votes, title), schema.topic);
+  const retArrayPayload = normalize([
+    createTopic(1, 2, 3, 'post1'),
+    createTopic(2, 2, 3, 'post2'),
+  ], schema.arrayOfTopics);
 
-it('should create an action to downvote a topic', () => {
-  const id = 1;
-  const expected = {
-    type: types.DOWNVOTE_TOPIC,
-    id: 1
+  return {
+    retPayload,
+    retArrayPayload,
+    id,
+    title,
+    votes,
+    ...override,
   };
-  expect(actions.downVote(id)).toEqual(expected);
+};
+
+describe('actions', () => {
+  it('should create an action to fetch topics', () => {
+    const { retArrayPayload } = setup();
+    const { type, payload } = actions.fetchTopics();
+    expect(type).toEqual(types.FETCH_TOPICS);
+    payload.then(data => expect(data).toEqual(retArrayPayload));
+  });
+
+  it('should create an action to add a toic', () => {
+    const { retPayload, title } = setup();
+    const { type, payload } = actions.addTopic(title);
+    expect(type).toEqual(types.ADD_TOPIC);
+    payload.then(data => expect(data).toEqual(retPayload));
+  });
+
+  it('should create an action to upvote a toic', () => {
+    const { retPayload, id, votes } = setup();
+    const { type, payload } = actions.upVote(id, votes);
+    expect(type).toEqual(types.UPVOTE_TOPIC);
+    payload.then(data => expect(data).toEqual(retPayload));
+  });
+
+  it('should create an action to downvote a toic', () => {
+    const { retPayload, id, votes } = setup();
+    const { type, payload } = actions.downVote(id, votes);
+    expect(type).toEqual(types.DOWNVOTE_TOPIC);
+    payload.then(data => expect(data).toEqual(retPayload));
+  });
 });

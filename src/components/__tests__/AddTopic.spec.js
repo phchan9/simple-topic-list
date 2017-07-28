@@ -1,18 +1,19 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import AddTopic from '../AddTopic';
 
+/* eslint-disable react/jsx-filename-extension */
 const setup = () => {
   const props = {
-    addTopic: jest.fn()
+    addTopic: jest.fn(),
   };
 
   const wrapper = mount(<AddTopic {...props} />);
 
   return {
     wrapper,
-    props
+    props,
   };
 };
 
@@ -29,7 +30,7 @@ describe('AddTopic Component', () => {
     textArea.node.value = '';
     textArea.simulate('change', textArea);
     form.simulate('submit', {
-      preventDefault: () => {}
+      preventDefault: () => {},
     });
     expect(props.addTopic).not.toHaveBeenCalled();
   });
@@ -41,7 +42,7 @@ describe('AddTopic Component', () => {
     textArea.node.value = 'This is a test';
     textArea.simulate('change', textArea);
     form.simulate('submit', {
-      preventDefault: () => {}
+      preventDefault: () => {},
     });
     expect(props.addTopic).toHaveBeenCalled();
   });
@@ -54,9 +55,8 @@ describe('AddTopic Component', () => {
     textArea.node.value = 'a'.repeat(256);
     textArea.simulate('change', textArea);
     form.simulate('submit', {
-      preventDefault: () => {}
+      preventDefault: () => {},
     });
     expect(errorMsgLabelWrapper.hasClass('invisible')).toBe(false);
-
-});
+  });
 });

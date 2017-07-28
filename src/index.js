@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import store from './store/configureStore';
 
+/* eslint-disable */ 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store}>  
     <App />
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root'));  // eslint-disable-line no-undef

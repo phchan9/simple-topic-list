@@ -15,6 +15,8 @@ const setup = () => {
     onUpVoteCallBack: jest.fn(),
     onDownVoteCallBack: jest.fn(),
     fetchTopics: jest.fn(),
+    receiveUpdatedTopic: jest.fn(),
+    receiveNewTopic: jest.fn(),
   };
 
   const wrapper = shallow(<TopicList {...props} />);

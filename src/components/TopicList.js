@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Topic from './Topic';
+import * as env from '../constants/env';
 
 /* eslint-disable react/jsx-filename-extension */
 class TopicList extends Component {
 
   componentDidMount() {
-    const { fetchTopics } = this.props;
+    const { fetchTopics, receiveUpdatedTopic, receiveNewTopic } = this.props;
     fetchTopics();
+    const urlToChangeStream = `${env.API_URL}/change-stream?'
+        + '_format=event-stream&access_token=${env.ACCESS_TOKEN}`;
+    this.evtSource = new EventSource(urlToChangeStream); // eslint-disable-line no-undef
+    this.evtSource.addEventListener('data', (msg) => {
+      const payload = JSON.parse(msg.data);
+      if (payload.type === 'create') {
+        receiveNewTopic(payload.data);
+      } else if (payload.type === 'update') {
+        receiveUpdatedTopic(payload.data);
+      }
+    });
+  }
+
+  componentDidUnMount() {
+    this.evtSource.close();
   }
 
   render() {
@@ -44,6 +60,8 @@ TopicList.propTypes = {
   onUpVoteCallBack: PropTypes.func.isRequired,
   onDownVoteCallBack: PropTypes.func.isRequired,
   fetchTopics: PropTypes.func.isRequired,
+  receiveUpdatedTopic: PropTypes.func.isRequired,
+  receiveNewTopic: PropTypes.func.isRequired,
 };
 
 export default TopicList;

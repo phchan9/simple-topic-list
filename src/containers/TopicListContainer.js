@@ -1,5 +1,11 @@
 import { connect } from 'react-redux';
-import { upVote, downVote, fetchTopics } from '../actions';
+import {
+  upVote,
+  downVote,
+  fetchTopics,
+  receiveUpdatedTopic,
+  receiveNewTopic,
+} from '../actions';
 import TopicList from '../components/TopicList';
 import { getAllSortedTopicList } from '../reducers';
 
@@ -10,10 +16,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchTopics,
+  receiveUpdatedTopic,
+  receiveNewTopic,
   onUpVoteCallBack: upVote,
   onDownVoteCallBack: downVote,
 };
 
-const TopicListContainer = connect(mapStateToProps,
-                                   mapDispatchToProps)(TopicList);
+const TopicListContainer = connect(mapStateToProps, mapDispatchToProps)(
+  TopicList,
+);
 export default TopicListContainer;

@@ -8,7 +8,11 @@ const allIds = (state = [], action) => {
       }
       return [...state, ...action.payload.result];
     case types.ADD_TOPIC:
-      if (!action.payload.result) {
+    case types.RECEIVE_NEW_TOPIC:
+      if (
+        !action.payload.result ||
+        state.indexOf(action.payload.result) !== -1
+      ) {
         return state;
       }
       return [...state, action.payload.result];

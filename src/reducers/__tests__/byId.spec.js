@@ -6,10 +6,8 @@ import createTopic from '../../utils';
 
 const setup = ({ overrideState, overrideAction }) => {
   const state = {
-    1: createTopic(1, 12, 23,
-                 'test1'),
-    2: createTopic(2, 33, 11,
-                 'test2'),
+    1: createTopic(1, 12, 23, 'test1'),
+    2: createTopic(2, 33, 11, 'test2'),
     ...overrideState,
   };
 
@@ -28,27 +26,71 @@ const setup = ({ overrideState, overrideAction }) => {
 };
 
 describe('byId reducer', () => {
-  it('should handle ADD_TOPIC', () => {
-    const { action, state: prevState, topic } = setup(
-      {
-        overrideAction: {
-          type: types.ADD_TOPIC,
-        },
+  it('should handle when payload does not have correct entities or result', () => {
+    const { action, state } = setup({
+      overrideAction: {
+        type: types.RECEIVE_UPDATED_TOPIC,
+        payload: normalize({ abc: 1, deb: 2 }, schema.topic),
       },
-    );
+    });
+    const expected = state;
+    const actual = byId(state, action);
+    expect(actual).toEqual(expected);
+  });
+
+  it('should handle RECEIVE_UPDATED_TOPIC', () => {
+    const { action, state, topic } = setup({
+      overrideAction: {
+        type: types.RECEIVE_UPDATED_TOPIC,
+      },
+    });
+    const oldTopic = { ...topic, upVotes: topic.upVotes - 1 };
+    const prevState = { ...state, [oldTopic.id]: oldTopic };
+    const expected = { ...prevState, [topic.id]: topic };
+    const actual = byId(state, action);
+    expect(actual).toEqual(expected);
+  });
+
+  it('should handle RECEIVE_NEW_TOPIC', () => {
+    const { action, state: prevState, topic } = setup({
+      overrideAction: {
+        type: types.RECEIVE_NEW_TOPIC,
+      },
+    });
+    const expected = { ...prevState, [topic.id]: topic };
+    const actual = byId(prevState, action);
+    expect(actual).toEqual(expected);
+  });
+
+  it('should handle FETCH_TOPICS', () => {
+    const { action, state: prevState, topic } = setup({
+      overrideAction: {
+        type: types.FETCH_TOPICS,
+      },
+    });
+    action.payload = normalize([topic], schema.arrayOfTopics);
+    const expected = { ...prevState, [topic.id]: topic };
+    const actual = byId(prevState, action);
+    expect(actual).toEqual(expected);
+  });
+
+  it('should handle ADD_TOPIC', () => {
+    const { action, state: prevState, topic } = setup({
+      overrideAction: {
+        type: types.ADD_TOPIC,
+      },
+    });
     const expected = { ...prevState, [topic.id]: topic };
     const actual = byId(prevState, action);
     expect(actual).toEqual(expected);
   });
 
   it('should handle UPVOTE_TOPIC', () => {
-    const { action, state, topic } = setup(
-      {
-        overrideAction: {
-          type: types.UPVOTE_TOPIC,
-        },
+    const { action, state, topic } = setup({
+      overrideAction: {
+        type: types.UPVOTE_TOPIC,
       },
-    );
+    });
     const oldTopic = { ...topic, upVotes: topic.upVotes - 1 };
     const prevState = { ...state, [oldTopic.id]: oldTopic };
     const expected = { ...prevState, [topic.id]: topic };
@@ -57,13 +99,11 @@ describe('byId reducer', () => {
   });
 
   it('should handle DOWNVOTE_TOPIC', () => {
-    const { action, state, topic } = setup(
-      {
-        overrideAction: {
-          type: types.UPVOTE_TOPIC,
-        },
+    const { action, state, topic } = setup({
+      overrideAction: {
+        type: types.UPVOTE_TOPIC,
       },
-    );
+    });
     const oldTopic = { ...topic, upVotes: topic.upVotes + 1 };
     const prevState = { ...state, [oldTopic.id]: oldTopic };
     const expected = { ...prevState, [topic.id]: topic };
@@ -72,13 +112,11 @@ describe('byId reducer', () => {
   });
 
   it('should handle default case', () => {
-    const { action, state } = setup(
-      {
-        overrideAction: {
-          type: types.RANDOM_TOPIC,
-        },
+    const { action, state } = setup({
+      overrideAction: {
+        type: types.RANDOM_TOPIC,
       },
-    );
+    });
 
     const prevState = { ...state };
     const expected = { ...prevState };

@@ -8,7 +8,7 @@ const byId = (state = {}, action) => {
     case types.DOWNVOTE_TOPIC:
     case types.RECEIVE_UPDATED_TOPIC:
     case types.RECEIVE_NEW_TOPIC:
-      if (!action.payload.entities) {
+      if (!action.payload.entities || !action.payload.result) {
         return state;
       }
       return {

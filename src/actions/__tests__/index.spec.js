@@ -35,6 +35,7 @@ const setup = (override) => {
     createTopic(1, 2, 3, 'post1'),
     createTopic(2, 2, 3, 'post2'),
   ], schema.arrayOfTopics);
+  const topic = createTopic(3, 3, 3, 'post3');
 
   return {
     retPayload,
@@ -42,11 +43,32 @@ const setup = (override) => {
     id,
     title,
     votes,
+    topic,
     ...override,
   };
 };
 
 describe('actions', () => {
+  it('should create an action to receive new topic sent from server', () => {
+    const { topic } = setup();
+    const expected = {
+      type: types.RECEIVE_NEW_TOPIC,
+      payload: normalize(topic, schema.topic),
+    };
+    const actual = actions.receiveNewTopic(topic);
+    expect(actual).toEqual(expected);
+  });
+
+  it('should create an action to receive updated topic sent from server', () => {
+    const { topic } = setup();
+    const expected = {
+      type: types.RECEIVE_UPDATED_TOPIC,
+      payload: normalize(topic, schema.topic),
+    };
+    const actual = actions.receiveUpdatedTopic(topic);
+    expect(actual).toEqual(expected);
+  });
+
   it('should create an action to fetch topics', () => {
     const { retArrayPayload } = setup();
     const { type, payload } = actions.fetchTopics();
